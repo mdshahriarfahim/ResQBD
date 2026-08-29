@@ -1,0 +1,42 @@
+:root {
+  --color-bg: #ffffff;
+  --color-surface: #f7f7f7;
+  --color-border: #e2e2e2;
+  --color-text-primary: #111111;
+  --color-text-secondary: #555555;
+  --color-brand: #e85d04;
+  --color-brand-dark: #c24c03;
+  --color-brand-light: #ffe8d6;
+  --color-priority-critical: #d7263d;
+  --color-priority-high: #f4a100;
+  --color-priority-medium: #f6c90e;
+  --color-priority-low: #2e8b57;
+  --color-success: #2e8b57;
+  --color-danger: #d7263d;
+  --color-info: #3b7dd8;
+
+  /* spacing scale */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 56px;
+  --space-9: 72px;
+  --space-10: 96px;
+
+  --section-y: 56px;
+  --card-pad: 24px;
+  --card-gap: 24px;
+  --content-max: 1200px;
+  --navbar-h: 72px;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --section-y: 96px;
+    --card-pad: 32px;
+  }
+}
