@@ -23,13 +23,13 @@ export default function Hero() {
 
           <div className="mt-8 flex flex-col gap-4 sm:flex-row">
             <a
-              href="#"
+              href="/report"
               className="rounded-md bg-[var(--color-brand)] px-6 py-3 text-center text-sm font-semibold text-white transition-colors duration-200 hover:bg-[var(--color-brand-dark)]"
             >
               Report an Emergency
             </a>
             <a
-              href="#"
+              href="/signup"
               className="rounded-md border border-[var(--color-text-primary)] px-6 py-3 text-center text-sm font-semibold text-[var(--color-text-primary)] transition-colors duration-200 hover:bg-[var(--color-text-primary)] hover:text-white"
             >
               Join as Volunteer

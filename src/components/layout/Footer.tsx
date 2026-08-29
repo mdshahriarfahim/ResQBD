@@ -6,11 +6,11 @@ import {
 } from "@/components/icons";
 
 const links = [
-  "Home",
-  "About Us",
-  "How It Works",
-  "Get Involved",
-  "Contact",
+  { label: "Home", href: "/" },
+  { label: "About Us", href: "/about" },
+  { label: "How It Works", href: "/how-it-works" },
+  { label: "Get Involved", href: "/get-involved" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export default function Footer() {
@@ -33,11 +33,11 @@ export default function Footer() {
           <nav className="grid grid-cols-2 gap-x-10 gap-y-2 sm:grid-cols-3">
             {links.map((l) => (
               <a
-                key={l}
-                href="#"
+                key={l.label}
+                href={l.href}
                 className="text-sm font-medium text-[var(--color-text-secondary)] transition-colors duration-150 hover:text-[var(--color-brand)]"
               >
-                {l}
+                {l.label}
               </a>
             ))}
           </nav>

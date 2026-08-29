@@ -8,7 +8,7 @@ export default function DualCTA() {
               Need Help?
             </h3>
             <a
-              href="#"
+              href="/report"
               className="mt-6 rounded-md bg-[var(--color-brand)] px-6 py-3 text-sm font-semibold text-white transition-colors duration-200 hover:bg-[var(--color-brand-dark)]"
             >
               Report an Emergency
@@ -19,7 +19,7 @@ export default function DualCTA() {
               Want to Help?
             </h3>
             <a
-              href="#"
+              href="/signup"
               className="mt-6 rounded-md border border-[var(--color-text-primary)] px-6 py-3 text-sm font-semibold text-[var(--color-text-primary)] transition-colors duration-200 hover:bg-[var(--color-text-primary)] hover:text-white"
             >
               Join as Volunteer

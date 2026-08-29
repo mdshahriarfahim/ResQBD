@@ -6,7 +6,7 @@ const links = [
   { label: "About Us", href: "/about" },
   { label: "How It Works", href: "/how-it-works" },
   { label: "Get Involved", href: "/get-involved" },
-  { label: "Contact", href: "#" },
+  { label: "Contact", href: "/contact" },
 ];
 
 
@@ -38,13 +38,13 @@ export default function Navbar() {
 
         <div className="hidden items-center gap-3 lg:flex">
           <a
-            href="#"
+            href="/signin"
             className="rounded-md border border-[var(--color-text-primary)] px-4 py-2 text-sm font-semibold text-[var(--color-text-primary)] transition-colors duration-200 hover:bg-[var(--color-text-primary)] hover:text-white"
           >
             Login
           </a>
           <a
-            href="#"
+            href="/report"
             className="rounded-md bg-[var(--color-brand)] px-4 py-2 text-sm font-semibold text-white transition-colors duration-200 hover:bg-[var(--color-brand-dark)]"
           >
             Report Emergency
@@ -53,7 +53,7 @@ export default function Navbar() {
 
         <div className="flex items-center gap-3 lg:hidden">
           <a
-            href="#"
+            href="/report"
             className="rounded-md bg-[var(--color-brand)] px-3 py-2 text-xs font-semibold text-white transition-colors duration-200 hover:bg-[var(--color-brand-dark)]"
           >
             Report Emergency
@@ -84,7 +84,7 @@ export default function Navbar() {
             ))}
 
             <a
-              href="#"
+              href="/signin"
               className="mt-2 rounded-md border border-[var(--color-text-primary)] px-4 py-2 text-center text-sm font-semibold text-[var(--color-text-primary)] transition-colors duration-200 hover:bg-[var(--color-text-primary)] hover:text-white"
             >
               Login

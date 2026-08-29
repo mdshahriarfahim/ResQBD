@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import Report from "@/pages/Report";
+import Report from "@/components/pages/Report";
 
 const title = "Report an Emergency — ResQBD";
 const description =

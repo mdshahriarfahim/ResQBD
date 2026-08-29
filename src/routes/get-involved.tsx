@@ -101,7 +101,7 @@ function PathSelector() {
             </ul>
             <div className="mt-auto pt-8">
               <a
-                href="#"
+                href="/signup"
                 className="inline-block rounded-md bg-[var(--color-brand)] px-6 py-3 text-sm font-semibold text-white transition-colors duration-200 hover:bg-[var(--color-brand-dark)]"
               >
                 Register as a Volunteer
@@ -135,7 +135,7 @@ function PathSelector() {
             </p>
             <div className="mt-auto pt-8">
               <a
-                href="#"
+                href="/signup"
                 className="inline-block rounded-md border border-[var(--color-text-primary)] px-6 py-3 text-sm font-semibold text-[var(--color-text-primary)] transition-colors duration-200 hover:bg-[var(--color-text-primary)] hover:text-white"
               >
                 Register Your Service
@@ -263,13 +263,13 @@ function ClosingCTA() {
         </p>
         <div className="mt-6 flex flex-col items-center justify-center gap-4 sm:flex-row">
           <a
-            href="#"
+            href="/report"
             className="rounded-md bg-[var(--color-brand)] px-6 py-3 text-sm font-semibold text-white transition-colors duration-200 hover:bg-[var(--color-brand-dark)]"
           >
             Report an Emergency
           </a>
           <a
-            href="#"
+            href="/signup"
             className="rounded-md border border-[var(--color-text-primary)] px-6 py-3 text-sm font-semibold text-[var(--color-text-primary)] transition-colors duration-200 hover:bg-[var(--color-text-primary)] hover:text-white"
           >
             Join as Volunteer
