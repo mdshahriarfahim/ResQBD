@@ -19,6 +19,9 @@ import { Route as HowItWorksRouteImport } from './routes/how-it-works'
 import { Route as ReportRouteImport } from './routes/report'
 import { Route as SigninRouteImport } from './routes/signin'
 import { Route as SignupRouteImport } from './routes/signup'
+import { Route as TrackRouteImport } from './routes/track'
+import { Route as AdminDashboardRouteImport } from './routes/admin/dashboard'
+import { Route as VolunteerDashboardRouteImport } from './routes/volunteer/dashboard'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -70,6 +73,21 @@ const SignupRoute = SignupRouteImport.update({
   path: '/signup',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TrackRoute = TrackRouteImport.update({
+  id: '/track',
+  path: '/track',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminDashboardRoute = AdminDashboardRouteImport.update({
+  id: '/admin/dashboard',
+  path: '/admin/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VolunteerDashboardRoute = VolunteerDashboardRouteImport.update({
+  id: '/volunteer/dashboard',
+  path: '/volunteer/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -82,6 +100,9 @@ export interface FileRoutesByFullPath {
   '/report': typeof ReportRoute
   '/signin': typeof SigninRoute
   '/signup': typeof SignupRoute
+  '/track': typeof TrackRoute
+  '/admin/dashboard': typeof AdminDashboardRoute
+  '/volunteer/dashboard': typeof VolunteerDashboardRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -94,6 +115,9 @@ export interface FileRoutesByTo {
   '/report': typeof ReportRoute
   '/signin': typeof SigninRoute
   '/signup': typeof SignupRoute
+  '/track': typeof TrackRoute
+  '/admin/dashboard': typeof AdminDashboardRoute
+  '/volunteer/dashboard': typeof VolunteerDashboardRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -107,6 +131,9 @@ export interface FileRoutesById {
   '/report': typeof ReportRoute
   '/signin': typeof SigninRoute
   '/signup': typeof SignupRoute
+  '/track': typeof TrackRoute
+  '/admin/dashboard': typeof AdminDashboardRoute
+  '/volunteer/dashboard': typeof VolunteerDashboardRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -121,6 +148,9 @@ export interface FileRouteTypes {
     | '/report'
     | '/signin'
     | '/signup'
+    | '/track'
+    | '/admin/dashboard'
+    | '/volunteer/dashboard'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -133,6 +163,9 @@ export interface FileRouteTypes {
     | '/report'
     | '/signin'
     | '/signup'
+    | '/track'
+    | '/admin/dashboard'
+    | '/volunteer/dashboard'
   id:
     | '__root__'
     | '/'
@@ -145,6 +178,9 @@ export interface FileRouteTypes {
     | '/report'
     | '/signin'
     | '/signup'
+    | '/track'
+    | '/admin/dashboard'
+    | '/volunteer/dashboard'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -158,6 +194,9 @@ export interface RootRouteChildren {
   ReportRoute: typeof ReportRoute
   SigninRoute: typeof SigninRoute
   SignupRoute: typeof SignupRoute
+  TrackRoute: typeof TrackRoute
+  AdminDashboardRoute: typeof AdminDashboardRoute
+  VolunteerDashboardRoute: typeof VolunteerDashboardRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -232,6 +271,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SignupRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/track': {
+      id: '/track'
+      path: '/track'
+      fullPath: '/track'
+      preLoaderRoute: typeof TrackRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/dashboard': {
+      id: '/admin/dashboard'
+      path: '/admin/dashboard'
+      fullPath: '/admin/dashboard'
+      preLoaderRoute: typeof AdminDashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/volunteer/dashboard': {
+      id: '/volunteer/dashboard'
+      path: '/volunteer/dashboard'
+      fullPath: '/volunteer/dashboard'
+      preLoaderRoute: typeof VolunteerDashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -246,6 +306,9 @@ const rootRouteChildren: RootRouteChildren = {
   ReportRoute: ReportRoute,
   SigninRoute: SigninRoute,
   SignupRoute: SignupRoute,
+  TrackRoute: TrackRoute,
+  AdminDashboardRoute: AdminDashboardRoute,
+  VolunteerDashboardRoute: VolunteerDashboardRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
