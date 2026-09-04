@@ -15,7 +15,6 @@
   --color-danger: #d7263d;
   --color-info: #3b7dd8;
 
-  /* spacing scale */
   --space-1: 4px;
   --space-2: 8px;
   --space-3: 12px;
@@ -34,9 +33,33 @@
   --navbar-h: 72px;
 }
 
+:root[data-theme="dark"] {
+  --color-bg: #14181f;
+  --color-surface: #1c212b;
+  --color-border: #2a2f3b;
+  --color-text-primary: #f0efe9;
+  --color-text-secondary: #a9adb8;
+  --color-brand: #f2790f;
+  --color-brand-dark: #ffa64d;
+  --color-brand-light: #3a2113;
+
+  --color-priority-critical: #ff5468;
+  --color-priority-high: #f4a100;
+  --color-priority-medium: #f6c90e;
+  --color-priority-low: #46b47a;
+
+  --color-success: #46b47a;
+  --color-danger: #ff5468;
+  --color-info: #5b9bf0;
+}
+
 @media (min-width: 768px) {
   :root {
     --section-y: 96px;
     --card-pad: 32px;
   }
+}
+
+* {
+  transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease;
 }
