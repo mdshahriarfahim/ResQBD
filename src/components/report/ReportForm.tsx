@@ -71,7 +71,10 @@ export default function ReportForm() {
   const [description, setDescription] = useState("");
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
-  const [step2Errors, setStep2Errors] = useState<{ name?: string; phone?: string }>({});
+  const [step2Errors, setStep2Errors] = useState<{ name: string; phone: string }>({
+    name: "",
+    phone: "",
+  });
 
   // Step 3 state
   const [photo, setPhoto] = useState<string | null>(null);
@@ -108,13 +111,13 @@ export default function ReportForm() {
   }
 
   function validateStep2() {
-    const next: { name?: string; phone?: string } = {};
+    const next = { name: "", phone: "" };
     if (!name.trim()) next.name = "Your name is required.";
     if (!phone.trim()) next.phone = "Phone number is required.";
     else if (!/^[0-9+\-\s]{6,20}$/.test(phone.trim()))
       next.phone = "Enter a valid phone number.";
     setStep2Errors(next);
-    return Object.keys(next).length === 0;
+    return !next.name && !next.phone;
   }
 
   function goStep3() {
@@ -299,7 +302,7 @@ export default function ReportForm() {
             value={name}
             onChange={(e) => {
               setName(e.target.value);
-              setStep2Errors((er) => ({ ...er, name: undefined }));
+              setStep2Errors((er) => ({ ...er, name: "" }));
             }}
             className={`mt-2 h-12 w-full rounded-lg border bg-[var(--color-bg)] px-4 text-base text-[var(--color-text-primary)] outline-none transition-colors duration-150 focus:border-[var(--color-brand)] focus:ring-2 focus:ring-[var(--color-brand)] ${
               step2Errors.name ? "border-[var(--color-danger)]" : "border-[var(--color-border)]"
@@ -319,7 +322,7 @@ export default function ReportForm() {
             value={phone}
             onChange={(e) => {
               setPhone(e.target.value);
-              setStep2Errors((er) => ({ ...er, phone: undefined }));
+              setStep2Errors((er) => ({ ...er, phone: "" }));
             }}
             className={`mt-2 h-12 w-full rounded-lg border bg-[var(--color-bg)] px-4 text-base text-[var(--color-text-primary)] outline-none transition-colors duration-150 focus:border-[var(--color-brand)] focus:ring-2 focus:ring-[var(--color-brand)] ${
               step2Errors.phone ? "border-[var(--color-danger)]" : "border-[var(--color-border)]"

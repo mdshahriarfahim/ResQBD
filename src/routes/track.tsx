@@ -10,7 +10,7 @@ const description =
 
 export const Route = createFileRoute("/track")({
   validateSearch: (search: Record<string, unknown>) => ({
-    code: typeof search.code === "string" ? search.code : undefined,
+    code: typeof search["code"] === "string" ? (search["code"] as string) : undefined,
   }),
   head: () => ({
     meta: [

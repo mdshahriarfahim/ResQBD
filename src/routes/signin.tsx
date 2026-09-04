@@ -27,19 +27,19 @@ export const Route = createFileRoute("/signin")({
   component: SignInPage,
 });
 
-type Errors = { identifier?: string; password?: string };
+type Errors = { identifier: string; password: string };
 
 function SignInPage() {
   const navigate = useNavigate();
   const [identifier, setIdentifier] = useState("");
   const [password, setPassword] = useState("");
-  const [errors, setErrors] = useState<Errors>({});
+  const [errors, setErrors] = useState<Errors>({ identifier: "", password: "" });
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
 
   function onSubmit(e: React.FormEvent) {
     e.preventDefault();
-    const next: Errors = {};
+    const next: Errors = { identifier: "", password: "" };
     const value = identifier.trim();
     if (!value) next.identifier = "Email or phone number is required.";
     else {
@@ -52,7 +52,7 @@ function SignInPage() {
     else if (password.length < 8)
       next.password = "Password must be at least 8 characters.";
     setErrors(next);
-    if (Object.keys(next).length > 0) return;
+    if (next.identifier || next.password) return;
     setLoading(true);
     window.setTimeout(() => {
       setLoading(false);
@@ -81,7 +81,7 @@ function SignInPage() {
             autoComplete="username"
             onChange={(v) => {
               setIdentifier(v);
-              setErrors((e) => ({ ...e, identifier: undefined }));
+              setErrors((e) => ({ ...e, identifier: "" }));
             }}
           />
           <Field
@@ -93,7 +93,7 @@ function SignInPage() {
             autoComplete="current-password"
             onChange={(v) => {
               setPassword(v);
-              setErrors((e) => ({ ...e, password: undefined }));
+              setErrors((e) => ({ ...e, password: "" }));
             }}
           />
 

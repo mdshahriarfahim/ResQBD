@@ -3,12 +3,18 @@ import { ShieldIcon, FireIcon } from "@/components/icons";
 
 type Priority = "critical" | "high" | "medium" | "low";
 
-const priorityColor: Record<Priority, string> = {
-  critical: "#D7263D",
-  high: "#F4A100",
-  medium: "#F6C90E",
-  low: "#2E8B57",
-};
+function colorOf(p: Priority): string {
+  switch (p) {
+    case "critical":
+      return "#D7263D";
+    case "high":
+      return "#F4A100";
+    case "medium":
+      return "#F6C90E";
+    case "low":
+      return "#2E8B57";
+  }
+}
 
 type Incident = {
   id: string;
@@ -162,7 +168,7 @@ function WarningPin({ color }: { color: string }) {
 
 export default function AdminDashboard() {
   const [filter, setFilter] = useState("All types");
-  const [selectedId, setSelectedId] = useState(incidents[0].id);
+  const [selectedId, setSelectedId] = useState(incidents[0]!.id);
   const [layers, setLayers] = useState({
     volunteers: true,
     fire: false,
@@ -174,7 +180,7 @@ export default function AdminDashboard() {
       ? incidents
       : incidents.filter((i) => i.type.toLowerCase().includes(filter.toLowerCase()));
 
-  const selected = incidents.find((i) => i.id === selectedId) ?? incidents[0];
+  const selected = incidents.find((i) => i.id === selectedId) ?? incidents[0]!;
   const criticalCount = incidents.filter((i) => i.priority === "critical").length;
 
   return (
@@ -256,11 +262,11 @@ export default function AdminDashboard() {
               {label}
               <span
                 className="relative h-3 w-5 rounded-full transition-colors duration-150"
-                style={{ background: layers[key] ? "#2E8B57" : "#3A3F4A" }}
+                style={{ background: layers[key as keyof typeof layers] ? "#2E8B57" : "#3A3F4A" }}
               >
                 <span
                   className="absolute top-[1.5px] h-2 w-2 rounded-full bg-white transition-all duration-150"
-                  style={{ left: layers[key] ? "10px" : "1.5px" }}
+                  style={{ left: layers[key as keyof typeof layers] ? "10px" : "1.5px" }}
                 />
               </span>
             </button>
@@ -310,12 +316,12 @@ export default function AdminDashboard() {
                   <span
                     className="absolute left-1/2 top-1/2 h-1.5 w-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full"
                     style={{
-                      background: priorityColor[inc.priority],
+                      background: colorOf(inc.priority),
                       animation: "resqbd-pulse 1.8s infinite",
                     }}
                   />
                 )}
-                <WarningPin color={priorityColor[inc.priority]} />
+                <WarningPin color={colorOf(inc.priority)} />
               </button>
             ))}
             {layers.volunteers && (
@@ -344,8 +350,8 @@ export default function AdminDashboard() {
               <span
                 className="rounded-full px-2.5 py-1 text-[10px] font-bold uppercase"
                 style={{
-                  background: `${priorityColor[selected.priority]}22`,
-                  color: priorityColor[selected.priority],
+                  background: `${colorOf(selected.priority)}22`,
+                  color: colorOf(selected.priority),
                 }}
               >
                 {selected.priority}
@@ -376,7 +382,7 @@ export default function AdminDashboard() {
               <span className="text-[10px]" style={{ color: "#8A8F9C" }}>
                 Final priority score
               </span>
-              <span className="text-lg font-extrabold" style={{ color: priorityColor[selected.priority] }}>
+              <span className="text-lg font-extrabold" style={{ color: colorOf(selected.priority) }}>
                 {selected.finalScore.toFixed(1)}
               </span>
             </div>
@@ -402,7 +408,7 @@ export default function AdminDashboard() {
               >
                 <span
                   className="h-2 w-2 shrink-0 rounded-full"
-                  style={{ background: priorityColor[inc.priority] }}
+                  style={{ background: colorOf(inc.priority) }}
                 />
                 <span className="flex-1">
                   {inc.type} — {inc.location}
