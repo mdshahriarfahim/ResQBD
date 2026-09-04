@@ -100,10 +100,27 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
   errorComponent: ErrorComponent,
 });
 
+// Prevents a flash of the wrong theme on page load/refresh by setting the
+// data-theme attribute before React mounts and before styles paint. Reads the
+// same localStorage key ("resqbd-theme") that src/hooks/useTheme.ts uses, so
+// the two stay in sync.
+const THEME_INIT_SCRIPT = `
+(function() {
+  try {
+    var stored = localStorage.getItem('resqbd-theme');
+    var theme = stored === 'light' || stored === 'dark'
+      ? stored
+      : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', theme);
+  } catch (e) {}
+})();
+`;
+
 function RootShell({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <head>
+        <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
         <HeadContent />
       </head>
       <body>

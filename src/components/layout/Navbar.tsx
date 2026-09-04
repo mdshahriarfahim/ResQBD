@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { ShieldIcon, MenuIcon, CloseIcon } from "@/components/icons";
+import ThemeToggle from "@/components/layout/ThemeToggle";
 
 const links = [
   { label: "Home", href: "/" },
@@ -37,6 +38,7 @@ export default function Navbar() {
         </nav>
 
         <div className="hidden items-center gap-3 lg:flex">
+          <ThemeToggle />
           <a
             href="/signin"
             className="rounded-md border border-[var(--color-text-primary)] px-4 py-2 text-sm font-semibold text-[var(--color-text-primary)] transition-colors duration-200 hover:bg-[var(--color-text-primary)] hover:text-white"
